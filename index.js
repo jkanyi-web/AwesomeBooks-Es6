@@ -17,7 +17,6 @@ function addContent() {
   const author = document.querySelector('#author');
   if (title.value === '' || author.value === '') {
     addBtn.removeEventListener('click');
-    alert('Please fill in all required fields');
   } else {
     bookCollection.addBook(title.value, author.value);
     title.value = '';
@@ -26,10 +25,10 @@ function addContent() {
 }
 
 document.addEventListener('keyup', (e) => {
-  if(e.key === 'Enter') {
-    addContent()
+  if (e.key === 'Enter') {
+    addContent();
   }
-})
+});
 
 addBtn.addEventListener('click', addContent);
 
