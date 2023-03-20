@@ -12,17 +12,26 @@ const addBtn = document.getElementById('add-books');
 addBtn.style.cursor = 'pointer';
 const bookCollection = new BookCollection();
 
-addBtn.addEventListener('click', () => {
+function addContent() {
   const title = document.querySelector('#title');
   const author = document.querySelector('#author');
   if (title.value === '' || author.value === '') {
     addBtn.removeEventListener('click');
+    alert('Please fill in all required fields');
   } else {
     bookCollection.addBook(title.value, author.value);
     title.value = '';
     author.value = '';
   }
-});
+}
+
+document.addEventListener('keyup', (e) => {
+  if(e.key === 'Enter') {
+    addContent()
+  }
+})
+
+addBtn.addEventListener('click', addContent);
 
 if (localStorage.getItem('books')) {
   bookCollection.books = JSON.parse(localStorage.getItem('books'));
