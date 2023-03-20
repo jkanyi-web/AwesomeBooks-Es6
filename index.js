@@ -15,7 +15,8 @@ const bookCollection = new BookCollection();
 function addContent() {
   const title = document.querySelector('#title');
   const author = document.querySelector('#author');
-  if (title.value === '' || author.value === '') {
+  if (title.value.trim() === '' || author.value.trim() === '') {
+    document.removeEventListener('keyup');
     addBtn.removeEventListener('click');
   } else {
     bookCollection.addBook(title.value, author.value);
